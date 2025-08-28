@@ -1,5 +1,5 @@
-# web-devlopment oibsib
-  web devlopment and Designing
+# web-devlopment oibsip
+  web devlopment and Designing project
 
 ## Project Title
   protfolio
