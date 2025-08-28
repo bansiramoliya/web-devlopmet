@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ramoliya Bansi • Portfolio</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f15;
+      --panel:#101723;
+      --muted:#aeb6c2;
+      --text:#e8eef6;
+      --brand:#4cc9f0;
+      --brand-2:#ffbd59;
+      --accent:#22c55e;
+      --card:#0f1622;
+      --outline:#1b2736;
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(1000px 600px at 100% -10%, rgba(76,201,240,.12), transparent 60%),
+                 radial-gradient(1000px 600px at -5% 120%, rgba(255,189,89,.10), transparent 60%),
+                 var(--bg);
+      color:var(--text);
+      line-height:1.7;
+      scroll-behavior:smooth;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:1000;
+      backdrop-filter:saturate(160%) blur(10px);
+      background:rgba(11,15,21,.6);
+      border-bottom:1px solid var(--outline);
+      box-shadow:var(--shadow);
+    }
+    .nav{
+      max-width:1120px;margin:auto;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 18px;
+    }
+    .brand{font-weight:700;letter-spacing:.5px;color:var(--brand)}
+    .nav a{margin:0 12px;color:var(--muted);font-weight:500}
+    .nav a:hover{color:var(--text)}
+    .btn{
+      background:linear-gradient(135deg,var(--brand),#7cd3ff);
+      color:#07131a;border:none;border-radius:999px;
+      padding:12px 18px;font-weight:700;cursor:pointer;
+      box-shadow:0 8px 20px rgba(76,201,240,.25);
+      transition:transform .15s ease,opacity .15s ease;
+    }
+    .btn:hover{transform:translateY(-2px);opacity:.95}
+    .btn-outline{
+      border:1px solid var(--outline);background:transparent;color:var(--text);
+      padding:10px 16px;border-radius:999px;font-weight:600
+    }
+    .btn-outline:hover{border-color:var(--brand);color:var(--brand)}
+
+    /* Sections */
+    section{padding:80px 18px}
+    .container{max-width:1120px;margin:auto}
+
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:40px;
+      align-items:center;min-height:70vh
+    }
+    .pre{color:var(--brand-2);font-weight:700;font-size:.9rem;letter-spacing:.2em;text-transform:uppercase}
+    .title{font-size:clamp(28px,5vw,44px);line-height:1.2;margin:.35rem 0 1rem}
+    .subtitle{color:var(--muted);max-width:700px;margin-bottom:22px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+
+    
+    
+
+    /* Section headings */
+    .section-title{font-size:1.8rem;margin-bottom:22px;color:var(--brand)}
+    .muted{color:var(--muted)}
+
+    /* About / Quick facts */
+    .about{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:28px
+    }
+    .panel{
+      background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 60%),var(--panel);
+      border:1px solid var(--outline);
+      border-radius:var(--radius);
+      padding:22px;box-shadow:var(--shadow)
+    }
+    .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .fact{background:var(--card);border:1px solid var(--outline);border-radius:12px;padding:14px}
+    .fact i{color:var(--brand-2);margin-right:8px}
+
+    /* Skills — 2 rows, 5 per row (total 10) */
+    #skills .subtitle{color:var(--muted);margin-top:-6px;margin-bottom:18px}
+    .skills-wrap{
+      background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 60%),var(--panel);
+      border:1px solid var(--outline);
+      border-radius:var(--radius);
+      padding:22px;box-shadow:var(--shadow)
+    }
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(5, 1fr);
+      gap:14px;
+    }
+    .skill{
+      background:var(--card);
+      border:1px solid var(--outline);
+      border-radius:12px;
+      padding:14px 12px;
+      text-align:center;
+      color:var(--text);
+      font-weight:600;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      user-select:none;
+    }
+    .skill:hover{
+      transform:translateY(-4px);
+      border-color:var(--brand);
+      box-shadow:0 8px 24px rgba(76,201,240,.18);
+    }
+
+    /* Projects */
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
+    .card{
+      background:var(--panel);border:1px solid var(--outline);border-radius:16px;
+      overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column
+    }
+    .thumb{height:160px;object-fit:cover}
+    .card-body{padding:16px}
+    .card h3{margin:6px 0 8px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .tag{font-size:.8rem;color:var(--muted);border:1px solid var(--outline);padding:4px 8px;border-radius:999px}
+    .actions{display:flex;gap:10px;margin-top:12px}
+    .actions a{font-size:.9rem}
+
+    /* Timeline (Education & Experience) */
+    .timeline{border-left:2px dashed var(--outline);padding-left:18px}
+    .tl-item{margin:0 0 18px 0;position:relative}
+    .tl-item::before{
+      content:'';position:absolute;left:-10px;top:6px;width:10px;height:10px;border-radius:50%;
+      background:var(--brand)
+    }
+    .tl-item h4{margin:0 0 6px}
+    .tl-item .when{font-size:.9rem;color:var(--muted);margin-bottom:6px}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    form{display:grid;gap:12px}
+    input,textarea{
+      background:#0d1420;border:1px solid var(--outline);color:var(--text);
+      padding:12px 14px;border-radius:10px;outline:none
+    }
+    textarea{min-height:120px;resize:vertical}
+    .contact-card .row{display:flex;gap:10px;align-items:center;margin:6px 0;color:var(--muted)}
+    .socials{display:flex;gap:10px;margin-top:10px}
+    .socials a{border:1px solid var(--outline);padding:8px 10px;border-radius:10px;color:var(--muted)}
+    .socials a:hover{border-color:var(--brand);color:var(--brand)}
+
+    /* Footer */
+    footer{border-top:1px solid var(--outline);padding:26px 18px;text-align:center;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 1080px){
+      .skills-grid{grid-template-columns:repeat(4,1fr)}
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr;gap:26px;text-align:center}
+      .about{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .subtitle{margin-inline:auto}
+      .profile{justify-self:center;width:100%;max-width:520px;height:280px}
+    }
+    @media (max-width: 620px){
+      .skills-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    /* Animations */
+    .fade-up{opacity:0;transform:translateY(16px);transition:all .6s ease}
+    .fade-up.show{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav class="nav container">
+      <div class="brand">Ramoliya Bansi</div>
+      <div>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="container">
+  <div class="hero">
+    <div class="fade-up">
+      <div class="pre">AI & Data Science • Web Development</div>
+      <h1 class="title">Hi, I'm <span style="color:var(--brand)">Ramoliya Bansi</span></h1>
+      <p class="subtitle">
+        AI & Data Science student from <b>Surat,Gujarat</b>, passionate about building fast, accessible, and beautiful web experiences.
+        I also enjoy <b>content writing</b>, <b>graphic design</b>, and crafting powerful workflows with <b>ChatGPT</b>.
+      </p>
+      <div class="cta">
+        <a class="btn" href="#contact"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
+        <a class="btn-outline" href="mailto:bansiramoliya988@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+        <a class="btn-outline" href="#" onclick="alert('Add your resume.pdf link here!')"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;      /* vertical center */
+  justify-content: center;  /* horizontal center */
+  text-align: center;       /* center text */
+  min-height: 100vh;        /* full screen height */
+  padding: 0 20px;          /* small padding for mobile */
+  flex-direction: column;    /* stack items vertically */
+}
+
+.hero .fade-up {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* center content horizontally */
+  gap: 20px;                /* spacing between elements */
+}
+
+.hero .fade-up .pre {
+  font-weight: 700;
+  color: var(--brand-2);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero .fade-up .title {
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 1.2;
+  margin: 0.35rem 0 1rem;
+}
+
+.hero .fade-up .subtitle {
+  color: var(--muted);
+  max-width: 700px;
+  margin-bottom: 22px;
+}
+
+.hero .fade-up .cta {
+  display: flex;
+  justify-content: center;  /* centers buttons */
+  gap: 12px;                /* spacing between buttons */
+  flex-wrap: wrap;          /* wrap on small screens */
+}
+
+</style>
+
+
+  <!-- About -->
+  <section id="about">
+    <div class="container about">
+      <div class="panel fade-up">
+        <h2 class="section-title">About Me</h2>
+        <p class="muted">
+          I’m a third-year B.Tech student in <b>Artificial Intelligence & Data Science</b> at <b>Government Engineering College, Rajkot (GECR)</b>.
+          I love turning ideas into real products—clean UI, responsive layouts, and smooth interactions. Recently, I’ve been interning as a
+          <b>Web Development & Designing Intern at Oasis Infobyte</b>, focusing on landing pages, portfolio sites, and utility web apps.
+        </p>
+        <p class="muted">
+          Outside of code, I write content, create designs in Figma/Canva, and build AI-assisted tools and prompts with ChatGPT to automate tasks and improve productivity.
+        </p>
+      </div>
+
+      <div class="panel fade-up">
+        <h3 class="section-title">Quick Facts</h3>
+        <div class="facts">
+          <div class="fact"><i class="fa-solid fa-location-dot"></i><b> Location:</b> Surat,Gujarat</div>
+          <div class="fact"><i class="fa-solid fa-envelope"></i><b> Email:</b> <a href="mailto:bansiramoliya988@gmail.com">bansiramoliya988@gmail.com</a></div>
+          <div class="fact"><i class="fa-solid fa-phone"></i><b> Phone:</b> <a href="tel:+918469067221">+91 8469067221</a></div>
+          <div class="fact"><i class="fa-solid fa-laptop-code"></i><b> Interested in:</b> Frontend • UI/UX • AI Tools</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills (10 total, 5 per row) -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <p class="subtitle">A mix of engineering fundamentals, practical web skills, and creative abilities.</p>
+
+      <div class="skills-wrap fade-up">
+        <div class="skills-grid">
+          <!-- Row 1 -->
+          <div class="skill">HTML5</div>
+          <div class="skill">CSS3</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">Bootstrap</div>
+          <div class="skill">MySQL</div>
+          <!-- Row 2 -->
+          <div class="skill">Python</div>
+          <div class="skill">Content Writing</div>
+          <div class="skill">Graphic Design</div>
+          <div class="skill">ChatGPT Expert</div>
+          <div class="skill">UI/UX Design</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects (12 cards) -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="muted">Selected work across web, design, writing, and AI-assisted tools.</p>
+
+      <div class="projects">
+        <!-- 1: Portfolio Website -->
+        <article class="card fade-up">
+          <img class="thumb" src="image1/protfoilo.png" alt="Portfolio Website" />
+          <div class="card-body">
+            <h3>Personal Portfolio Website</h3>
+            <p class="muted">Responsive single-page portfolio with dark theme, animated sections, and project grid.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+           
+          </div>
+        </article>
+
+        <!-- 2: Travel Landing Page -->
+        <article class="card fade-up">
+          <img class="thumb" src="image1//ladingpage.jpg" alt="Travel Website" />
+          <div class="card-body">
+            <h3>Make Your Trip Easy (Landing Page)</h3>
+            <p class="muted">Dark, modern travel landing page with hero, destinations, reviews, and clean UI.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+          
+          </div>
+        </article>
+
+        <!-- 3: Calculator -->
+        <article class="card fade-up">
+          <img class="thumb" src="image1/calculator.png" alt="Calculator App" />
+          <div class="card-body">
+            <h3>Calculator App</h3>
+            <p class="muted">Simple calculator supporting basic arithmetic and keyboard input.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+            
+          </div>
+        </article>
+
+        <!-- 4: Temperature Converter -->
+        <article class="card fade-up">
+          <img class="thumb" src="image1/tempconvert.jpg" alt="Temperature Converter" />
+          <div class="card-body">
+            <h3>Temperature Converter</h3>
+            <p class="muted">Celsius ↔ Fahrenheit ↔ Kelvin with instant conversions and validations.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+            
+          </div>
+        </article>
+
+        <!-- 5: To-Do App -->
+        <article class="card fade-up">
+          <img class="thumb" src="image1/todoapp.jpg" alt="To-Do App" />
+          <div class="card-body">
+            <h3>To-Do List App</h3>
+            <p class="muted">Task manager with add/delete/complete and localStorage persistence.</p>
+            <div class="tags"><span class="tag">JS</span><span class="tag">LocalStorage</span></div>
+            
+          </div>
+        </article>
+
+        <!-- 6: Student DBMS -->
+        <article class="card fade-up">
+          <img class="thumb" src="image1/studentdbms.jpg" alt="DBMS" />
+          <div class="card-body">
+            <h3>Student Database Management</h3>
+            <p class="muted">CRUD mini-project for student records with PHP + MySQL (search, filter, auth).</p>
+            <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span></div>
+            
+          </div>
+        </article>
+
+        <!-- 7: Content Writing Blog -->
+        <article class="card fade-up">
+          <img class="thumb" src="image1/contantwritting.jpg" alt="Content Writing Blog" />
+          <div class="card-body">
+            <h3>Content Writing Blog</h3>
+            <p class="muted">SEO-friendly blog with clear structure, readability, and internal linking strategy.</p>
+            <div class="tags"><span class="tag">Writing</span><span class="tag">SEO</span><span class="tag">Markdown</span></div>
+            
+          </div>
+        </article>
+
+        <!-- 8: Graphic Design Portfolio -->
+        <article class="card fade-up">
+          <img class="thumb" src="image1/graphidesign.jpg" alt="Graphic Design" />
+          <div class="card-body">
+            <h3>Graphic Design Portfolio</h3>
+            <p class="muted">Posters, banners, and social creatives made with Canva & Figma; brand style exploration.</p>
+            <div class="tags"><span class="tag">Canva</span><span class="tag">Figma</span><span class="tag">Branding</span></div>
+           
+          </div>
+        </article>
+
+        <!-- 9: ChatGPT Prompt Lab -->
+        <article class="card fade-up">
+          <img class="thumb" src="image1/chatgpt.jpg" alt="ChatGPT Project" />
+          <div class="card-body">
+            <h3>ChatGPT Prompt Lab</h3>
+            <p class="muted">A curated set of prompts + small web UI to automate writing, ideation, and code snippets.</p>
+            <div class="tags"><span class="tag">ChatGPT</span><span class="tag">Prompt Engineering</span></div>
+           
+          </div>
+        </article>
+
+        <!-- 10: Weather App -->
+        <article class="card fade-up">
+          <img class="thumb" src="image1/wether.jpg" alt="Weather App" />
+          <div class="card-body">
+            <h3>Weather Now</h3>
+            <p class="muted">Clean weather dashboard with search, units toggle, and responsive layout.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+            
+          </div>
+        </article>
+
+        <!-- 11: Notes App -->
+        <article class="card fade-up">
+          <img class="thumb" src="image1/notesapp.jpg" alt="Notes App" />
+          <div class="card-body">
+            <h3>Quick Notes</h3>
+            <p class="muted">Minimal note-taking app with tags, search, and autosave to localStorage.</p>
+            <div class="tags"><span class="tag">JavaScript</span><span class="tag">LocalStorage</span></div>
+            
+          </div>
+        </article>
+
+        <!-- 12: URL Shortener UI -->
+        <article class="card fade-up">
+          <img class="thumb" src="image1/urlshoter.jpg" alt="URL Shortener" />
+          <div class="card-body">
+            <h3>MiniLink — URL Shortener UI</h3>
+            <p class="muted">Frontend for a URL shortener with copy-to-clipboard, QR, and history.</p>
+            <div class="tags"><span class="tag">UI/UX</span><span class="tag">JavaScript</span></div>
+            
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="panel fade-up timeline">
+        <div class="tl-item">
+          <h4>Web Development & Designing Intern — Oasis Infobyte</h4>
+          <div class="when">2025</div>
+          <p class="muted">Built landing pages, portfolio sites, and utility apps (calculator, temperature converter). Focused on clean UI, responsiveness, and accessible design.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="panel fade-up timeline">
+        <div class="tl-item">
+          <h4>Government Engineering College, Rajkot (GECR)</h4>
+          <div class="when">B.Tech — Artificial Intelligence & Data Science • 2023 - Present</div>
+          <p class="muted">Coursework: Programming, Data Structures, DBMS, Statistics, AI/ML basics, Web Development.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Higher Secondary (Science)</h4>
+          <div class="when">Completed • Focus on Mathematics & Computer Science</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <div class="panel contact-card fade-up">
+          <h3>Let's build something great</h3>
+          <div class="row"><i class="fa-solid fa-location-dot"></i> Surat,Gujarat</div>
+          <div class="row"><i class="fa-solid fa-envelope"></i> <a href="mailto:bansiramoliya988@gmail.com">bansiramoliya988@gmail.com</a></div>
+          <div class="row"><i class="fa-solid fa-phone"></i> <a href="tel:+918469067221">+91 8469067221</a></div>
+          <div class="socials">
+            <a href="https://github.com/bansiramoliya" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+        </div>
+
+        <form class="panel fade-up" onsubmit="event.preventDefault(); alert('Thanks! This demo form is not wired to a backend yet.')">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message"></textarea>
+          <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Bansi Ramoliya — Built with ❤ in Rajkot
+  </footer>
+
+  <script>
+    // Intersection Observer: reveal on scroll
+    const onShow = (el)=>el.classList.add('show');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          onShow(e.target);
+          io.unobserve(e.target);
+        }
+      })
+    },{threshold:.2});
+    document.querySelectorAll('.fade-up, .skills-wrap').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
